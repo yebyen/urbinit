@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+SHIP=novfes-lodzod-satnum-maptux
+LOCKFILE="$HOME/.dlock/$SHIP.lock"
+
+if [ ! -e $LOCKFILE ]; then
+#  ~/bin/urbit
+
+source ~/.profile
+
+ID=$(sudo docker run -d -i -t $SHIP /.urbit-exec)
+echo $ID > $LOCKFILE
+sudo docker attach $ID
+sudo docker commit $ID $SHIP > $LOCKFILE
+
+  ~/bin/init-yacht2-stop
+else
+  echo "LOCK FILE EXISTS ALREADY... quitting"
+fi

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+source ~/.profile
+
+SHIP=dansut-docfyn-foprex-lanfen
+ID=$(sudo docker run -d -i -t -privileged $SHIP /.urbit-exec)
+sudo docker attach $ID
+sudo docker commit $ID $SHIP

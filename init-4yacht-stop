@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+LOCKFILE="$HOME/.dlock/dinfes-libzod-satnum-maptux.lock"
+
+if [ -e $LOCKFILE ]; then
+  rm $LOCKFILE
+else
+  echo "no urb is running (no action taken)"
+fi
