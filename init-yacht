@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SHIP=firfes-napzod-satnum-maptux
+SHIP=firfes-napzod-fantyv-ralpen
 LOCKFILE="$HOME/.dlock/$SHIP.lock"
 
 if [ ! -e $LOCKFILE ]; then

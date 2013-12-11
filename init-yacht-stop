@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LOCKFILE="$HOME/.dlock/firfes-napzod-satnum-maptux.lock"
+LOCKFILE="$HOME/.dlock/firfes-napzod-fantyv-ralpen.lock"
 
 if [ -e $LOCKFILE ]; then
   rm $LOCKFILE
