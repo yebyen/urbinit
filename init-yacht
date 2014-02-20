@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SHIP=firfes-napzod-fantyv-ralpen
+SHIP=sipsup-dopdep
 LOCKFILE="$HOME/.dlock/$SHIP.lock"
 
 if [ ! -e $LOCKFILE ]; then
@@ -8,7 +8,7 @@ if [ ! -e $LOCKFILE ]; then
 
 source ~/.profile
 
-ID=$(sudo docker run -d -i -t $SHIP /.urbit-exec)
+ID=$(sudo docker run -d -i -t $SHIP /.urbinit)
 echo $ID > $LOCKFILE
 sudo docker attach $ID
 sudo docker commit $ID $SHIP > $LOCKFILE
