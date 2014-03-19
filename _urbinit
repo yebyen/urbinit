@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+export URBIT_HOME=/urbit/urb
+cd /urbit
+if [ ! -d pier ]
+then
+  bin/vere -c pier
+else
+  bin/vere pier
+fi
