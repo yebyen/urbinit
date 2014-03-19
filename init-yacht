@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-SHIP=sipsup-dopdep
+#SHIP=magsup-sogdep
+SHIP=filsel-minleg
 LOCKFILE="$HOME/.dlock/$SHIP.lock"
 
 if [ ! -e $LOCKFILE ]; then
