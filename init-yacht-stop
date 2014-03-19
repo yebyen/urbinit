@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LOCKFILE="$HOME/.dlock/sipsup-dopdep.lock"
+LOCKFILE="$HOME/.dlock/magsup-sogdep.lock"
 
 if [ -e $LOCKFILE ]; then
   rm $LOCKFILE
