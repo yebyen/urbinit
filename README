@@ -24,6 +24,14 @@ For more patient readers, the following instructions will hopefully make clear
 how to create and keep an image of your ship, preserving the checkpoint state
 automatically whenever you brought it down.
 
+
+__ The rest of these instructions are in need of a refresh
+Try `docker run -i -t yebyen/urbinit` for a current urbit as of commit ecc024f.
+You can also build the container yourself from the Dockerfile, and depends on
+http://github.com/kingdonb/baseimage-docker (checkout -b trusty origin/trusty)
+__ Thanks for playing along! __
+
+
 #### About urbit and docker: ####
 
 Why this script?
