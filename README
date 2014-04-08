@@ -26,7 +26,7 @@ automatically whenever you brought it down.
 
 
 __ The rest of these instructions are in need of a refresh
-Try `docker run -i -t yebyen/urbinit` for a current urbit as of commit ecc024f.
+Try `docker run -i -t yebyen/urbinit` for a current urbit as of commit ce51049.
 You can also build the container yourself from the Dockerfile, and depends on
 http://github.com/kingdonb/baseimage-docker (checkout -b trusty origin/trusty)
 __ Thanks for playing along! __
