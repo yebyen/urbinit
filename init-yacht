@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-#SHIP=magsup-sogdep
-SHIP=filsel-minleg
+SHIP=magsup-sogdep
 LOCKFILE="$HOME/.dlock/$SHIP.lock"
 
 if [ ! -e $LOCKFILE ]; then
