@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-#LOCKFILE="$HOME/.dlock/magsup-sogdep.lock"
-LOCKFILE="$HOME/.dlock/filsel-minleg.lock"
+LOCKFILE="$HOME/.dlock/davlet-wistyr.lock"
 
 if [ -e $LOCKFILE ]; then
   rm $LOCKFILE
