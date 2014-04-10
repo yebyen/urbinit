@@ -1,7 +1,6 @@
-FROM yebyen/urbinit-base
+FROM yebyen/urbinit-re2
 RUN git clone https://github.com/urbit/urbit 
-RUN apt-get -y install gcc && apt-get clean
-RUN cd /urbit && make
+RUN cd /urbit && make; make
 ADD ./_urbinit /.urbinit
 RUN ln -s /root/.urbit /.urbit
 RUN echo 'source $HOME/.profile' >/.bashrc
