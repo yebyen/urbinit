@@ -6,4 +6,4 @@ RUN apt-get -y install openssl libssl-dev && apt-get clean
 RUN apt-get -y install libncurses5-dev git && apt-get clean
 RUN apt-get -y install make exuberant-ctags && apt-get clean
 RUN apt-get -y install wget screen tmux unzip && apt-get clean
-RUN apt-get -y install gcc && apt-get clean
+RUN apt-get -y install gcc g++ && apt-get clean
