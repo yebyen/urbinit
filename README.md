@@ -1,10 +1,12 @@
-#### 1. tl;dr
-#### 2. About urbit and docker
-#### 3. What to do
-#### 4. What about these other files?
-#### 5. More than one pier?
-#### 6. From the Creator
-#### 7. Polite and Friendly Etiquette/Advice for any Global Namespace Chat
+1. tl;dr
+2. About urbit and docker
+3. What to do
+4. What about these other files?
+5. More than one pier?
+6. From the Creator
+7. Polite and Friendly Etiquette/Advice for any Global Namespace Chat
+
+*****
 
 #### tl;dr if you're familiar with docker
 
@@ -22,6 +24,7 @@ http://github.com/kingdonb/baseimage-docker (checkout -b trusty origin/trusty)
 
 __ Thanks for playing along! __
 
+*****
 
 #### About urbit and docker:
 
@@ -67,6 +70,7 @@ I simply added another lock out of the container, in the ~/.dlock directory.
 If you did not already, create the empty directory ~/.dlock now, on the host
 where you run your docker containers: `mkdir ~/.dlock`
 
+*****
 
 #### What to do:
 
@@ -130,6 +134,7 @@ logical choice if you only have one destroyer at your pier.  You can name your
 image any old thing (and set the SHIP variable to that, so urbinit knows what
 image to launch.)
 
+*****
 
 ### What about these other files?
 
@@ -144,12 +149,15 @@ it's the non-locking version for you to read and understand.
 
 Don't use it.  It's not safe.  Your ship may sink.  You've been warned!
 
+*****
+
 ### More than one pier?
 
 If you want to run multiple piers on the same docker host machine, you would
 simply change the name of the lock file to something unique -- you could use
 the $SHIP variable: LOCKFILE="$HOME/.dlock/$SHIP.lock"
 
+*****
 
 #### From the Creator
 
