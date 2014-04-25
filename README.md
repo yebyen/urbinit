@@ -12,12 +12,10 @@
 
 1. `docker pull yebyen/urbinit`
 2. `docker run -i -t yebyen/urbinit`
-3. This will drop you in to a Debian instance, running [screen](https://www.debian-administration.org/articles/34), with urbit on screen 0 running a newly created pier for the first time. Now you're at the 'register' step on the urbit [setup page](http://urbit.org/setup/)
-4. If you want to keep your ship / image, be sure to commit it before stopping the image.
+3. This will drop you in to a Debian instance, running [screen](https://www.debian-administration.org/articles/34), with urbit on screen 0 running a newly created pier for the first time. Screen is convenient for editing files, since there's no editor inside of urbit. Now you're at the 'run' step on the urbit [setup page](http://urbit.org/setup/).
+4. Be sure to `docker commit` to keep an image of your container along with your ship / pier once the container is stopped.
 
-For more patient readers, the following instructions will hopefully make clear
-how to create and keep an image of your ship, preserving the checkpoint state
-automatically whenever you brought it down.
+For more patient readers, the following instructions will make clear in greater detail how to create and keep an image of your ship, preserving the checkpoint state automatically whenever you brought it down.
 
 You can also build the container yourself from the Dockerfile, and depends on
 http://github.com/kingdonb/baseimage-docker (checkout -b trusty origin/trusty)
