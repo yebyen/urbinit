@@ -1,38 +1,30 @@
-Table of Contents:
-# 1. tl;dr
-# 2. About urbit and docker
-# 3. What to do
-# 4. What about these other files?
-# 5. More than one pier?
-# 6. From the Creator
-# 7. Polite and Friendly Etiquette/Advice for any Global Namespace Chat
+1. tl;dr
+2. About urbit and docker
+3. What to do
+4. What about these other files?
+5. More than one pier?
+6. From the Creator
+7. Polite and Friendly Etiquette/Advice for any Global Namespace Chat
 
-tl;dr
-to use urbinit:
+*****
 
-1) you need docker (and sudo, unless you know you don't need it)
-2) you must update SHIP in `urbit` and `init-urb`
-3) place all of these files in your path, in ~/bin if possible:
-init-urb
-init-urb-stop
-urbinit -> init-urb (symlink)
+#### tl;dr if you're familiar with docker
 
-4) create the directory ~/.dlock:
-$ mkdir ~/.dlock
+1. `docker pull yebyen/urbinit`
+2. `docker run -i -t yebyen/urbinit`
+3. This will drop you in to a Debian instance, running [screen](https://www.debian-administration.org/articles/34), with urbit on screen 0 running a newly created pier for the first time. Screen is convenient for editing files, since there's no editor inside of urbit. Now you're at the 'run' step on the urbit [setup page](http://urbit.org/setup/).
+4. Be sure to `docker commit` to keep an image of your container along with your ship / pier once the container is stopped.
 
-For more patient readers, the following instructions will hopefully make clear
-how to create and keep an image of your ship, preserving the checkpoint state
-automatically whenever you brought it down.
+For more patient readers, the following instructions will make clear in greater detail how to create and keep an image of your ship, preserving the checkpoint state automatically whenever you brought it down.
 
-
-__ The rest of these instructions are in need of a refresh
-Try `docker run -i -t yebyen/urbinit` for a current urbit as of commit 8399bd3.
 You can also build the container yourself from the Dockerfile, and depends on
 http://github.com/kingdonb/baseimage-docker (checkout -b trusty origin/trusty)
+
 __ Thanks for playing along! __
 
+*****
 
-#### About urbit and docker: ####
+#### About urbit and docker:
 
 Why this script?
 
@@ -76,23 +68,23 @@ I simply added another lock out of the container, in the ~/.dlock directory.
 If you did not already, create the empty directory ~/.dlock now, on the host
 where you run your docker containers: `mkdir ~/.dlock`
 
-#### What to do: ####
+*****
+
+#### What to do:
 
 The locking version is `init-urb`.  Run that, or use the symlink `urbinit`.
 
 Read `init-urb` quickly since you need to change it, and use a script inside
 the container like my `/.urbit-exec` below:
 
-#/.urbit-exec
----
-#!/usr/bin/env bash
-URBIT_HOME=/home/urbit-master/urb
-pushd $URBIT_HOME
-export URBIT_HOME
-cd ..
-bin/vere mypier
+    #!/usr/bin/env bash
+    URBIT_HOME=/home/urbit-master/urb
+    pushd $URBIT_HOME
+    export URBIT_HOME
+    cd ..
+    bin/vere mypier
 
-## (if you don't have a ship in a docker container already, skip forward to the
+(if you don't have a ship in a docker container already, skip forward to the
 docker instructions and use my image, `yebyen/urbit-debian`, tag :dev or :bin.
 It already has the urbit-exec script placed where init-urb expects to find it.)
 
@@ -111,27 +103,27 @@ commit it back when the urbit-exec's vere process exits.
 If you don't already have a docker container with a ship in it, start with:
 
 -- (pull my base image, run it and attach to the container)
-$ docker pull yebyen/urbit-debian
-$ ID=$(docker run -i -t -d yebyen/urbit-debian:dev /bin/bash)
-$ docker attach $ID
+    $ docker pull yebyen/urbit-debian
+    $ ID=$(docker run -i -t -d yebyen/urbit-debian:dev /bin/bash)
+    $ docker attach $ID
 
 -- (then in the root shell of the container)
-# . /.bashrc
-# cd /urbit
-# git pull
-# make
-# bin/vere -c mypier
+    # . /.bashrc
+    # cd /urbit
+    # git pull
+    # make
+    # bin/vere -c mypier
+
 ... wait for ~zod to send you the hoons
-/=try=> ^D (ctrl-D to exit vere)
-# ^D
+    /=try=> ^D (ctrl-D to exit vere)
+    ^D
 
 -- (now back in the shell on your docker host)
-$ docker commit $ID the-name-of--your-ship # <- This step saves you from sinking
+    $ docker commit $ID the-name-of--your-ship # <- This step saves you from sinking
 
 You may need to have special permission (or be root) to run the docker verbs --
 I didn't need to pay attention to any of that, using CoreOS.
 
-###
 After you commit your new ship, you can set SHIP to the name of its image at
 line 3 in `init-urb`.
 
@@ -140,8 +132,9 @@ logical choice if you only have one destroyer at your pier.  You can name your
 image any old thing (and set the SHIP variable to that, so urbinit knows what
 image to launch.)
 
-###
-What about these other files?
+*****
+
+### What about these other files?
 
 The short, non-locking `urbit` version of the code is in a file called `urbit`.
 This basic idea was reused with added locking in `init-urb`.  The +x perms on
@@ -154,34 +147,33 @@ it's the non-locking version for you to read and understand.
 
 Don't use it.  It's not safe.  Your ship may sink.  You've been warned!
 
-###
-More than one pier?
+*****
+
+### More than one pier?
 
 If you want to run multiple piers on the same docker host machine, you would
 simply change the name of the lock file to something unique -- you could use
 the $SHIP variable: LOCKFILE="$HOME/.dlock/$SHIP.lock"
 
+*****
 
-#### From the Creator ####
+#### From the Creator
+
 "[Curtis Yarvin]: I can't emphasize strongly enough that you can't just
 recreate a destroyer within the current continuity era - it will have the wrong
 message sequence numbers, and won't be able to acknowledge packets."
 
 -- https://groups.google.com/forum/#!searchin/urbit-dev/I$20can$27t$20emphasize$20strongly$20enough/urbit-dev/T_NeU7Iy66o/lRg0OsMOlZcJ
-On continuity -- search for "flag day" and "continuity breach" on urbit-dev
 
-If you use a yebyen/urbit-debian image provided, your URBIT_HOME is /urbit and
-the /.urbit-exec script is provided, already replaced 'mypier' with 'pier', but
-you still have to create your pier and this must match the name in /.urbit-exec
-for urbinit to bring up your ship.
+On continuity -- search for "flag day" and "continuity breach" on urbit-dev, or go [here](http://urbit.org/community/articles/continuity/).
+
+If you use a `yebyen/urbit-debian` image provided, your `URBIT_HOME` is /urbit and the `/.urbit-exec` script is provided, already replaced 'mypier' with 'pier', but you still have to create your pier and this must match the name in `/.urbit-exec` for urbinit to bring up your ship.
 
 
-#### Polite and Friendly Etiquette/Advice for any Global Namespace Chat ####
+#### Polite and Friendly Etiquette/Advice for any Global Namespace Chat
 One last thing: before you use :chat, please consider using :begin to create a
 ship with a shorter name.  It will allow you to mark more permanently your own
 identity, and it can take up a lot less space within a given line of text.
 
 Please do not :chat from a submarine!  It's rude, and what's more, likely it
 has already been made impossible by Tlon, Inc. at the time you read this :)
-
-# Todo: rewrite this documentation to be interpreted by maruku
