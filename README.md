@@ -1,12 +1,12 @@
-# 1. tl;dr
-# 2. About urbit and docker
-# 3. What to do
-# 4. What about these other files?
-# 5. More than one pier?
-# 6. From the Creator
-# 7. Polite and Friendly Etiquette/Advice for any Global Namespace Chat
+#### 1. tl;dr
+#### 2. About urbit and docker
+#### 3. What to do
+#### 4. What about these other files?
+#### 5. More than one pier?
+#### 6. From the Creator
+#### 7. Polite and Friendly Etiquette/Advice for any Global Namespace Chat
 
-tl;dr if you're familiar with docker
+#### tl;dr if you're familiar with docker
 
 1. `docker pull yebyen/urbinit`
 2. `docker run -i -t yebyen/urbinit`
