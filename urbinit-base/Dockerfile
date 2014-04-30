@@ -1,9 +1,9 @@
-FROM yebyen/trusty:baseimage
+FROM yebyen/trusty
 RUN apt-get update
-RUN apt-get -y install apt-utils dialog libterm-readline-perl-perl && apt-get clean
-RUN apt-get -y install libgmp3-dev libsigsegv-dev && apt-get clean
-RUN apt-get -y install openssl libssl-dev && apt-get clean
-RUN apt-get -y install libncurses5-dev git && apt-get clean
-RUN apt-get -y install make exuberant-ctags && apt-get clean
-RUN apt-get -y install wget screen tmux unzip && apt-get clean
-RUN apt-get -y install gcc g++ && apt-get clean
+RUN apt-get -y install apt-utils dialog libterm-readline-perl-perl \
+                        libgmp3-dev libsigsegv-dev \
+                        openssl libssl-dev \
+                        libncurses5-dev git \
+                        make exuberant-ctags \
+                        wget screen tmux unzip \
+                        gcc g++ && apt-get clean
