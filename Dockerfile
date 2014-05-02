@@ -1,6 +1,5 @@
-FROM yebyen/urbinit-base
-RUN git clone https://github.com/urbit/urbit 
-RUN cd /urbit && make
+FROM yebyen/urbinit:source
+RUN cd /urbit && git pull && make
 ADD ./_urbinit /.urbinit
 RUN ln -s /root/.urbit /.urbit
 RUN echo 'source $HOME/.profile' >/.bashrc
