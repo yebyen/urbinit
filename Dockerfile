@@ -1,4 +1,4 @@
-FROM yebyen/urbinit:source
+FROM yebyen/urbinit:src
 RUN cd /urbit && git pull && make
 ADD ./_urbinit /.urbinit
 RUN ln -s /root/.urbit /.urbit
