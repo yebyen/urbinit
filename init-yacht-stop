@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-#LOCKFILE="$HOME/.dlock/magsup-sogdep.lock"
-LOCKFILE="$HOME/.dlock/novfes-lodzod-nolpun-panfel.lock"
+SHIP=$1
+LOCKFILE="$HOME/.dlock/${SHIP}.lock"
 
 if [ -e $LOCKFILE ]; then
   rm $LOCKFILE

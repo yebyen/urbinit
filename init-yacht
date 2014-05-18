@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
+set -e
 
-#SHIP=magsup-sogdep
-SHIP=novfes-lodzod-nolpun-panfel
+SHIP=novfes-lodzod
 LOCKFILE="$HOME/.dlock/$SHIP.lock"
 
 if [ ! -e $LOCKFILE ]; then
 #  ~/bin/urbit
 
 source ~/.profile
-
-ID=$(docker run -d -i -t $SHIP)
+docker rm $SHIP
+ID=$(docker run --name $SHIP -d -i -t $SHIP /.urbinit)
 echo $ID > $LOCKFILE
-sudo docker attach $ID
-sudo docker commit $ID $SHIP > $LOCKFILE
+docker attach $ID
+docker commit $ID $SHIP > $LOCKFILE
 
-  ~/bin/init-yacht-stop
+  ~/bin/init-yacht-stop $SHIP
 else
   echo "LOCK FILE EXISTS ALREADY... quitting"
 fi
