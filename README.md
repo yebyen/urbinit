@@ -33,8 +33,9 @@ Unless you are a docker and screen expert, you will have inadvertently stopped
 the whole container and killed both of `screen` and `vere` in the process.
 
 You are in front of a `vere` that runs inside of `screen` under a `bash` with
-its parent process docker, and your ship is floating at a newly created pier.
-It's dark here.  A constellation of items are with you now, but you can't see.
+its parent process docker, and your ship is floating at a newly created pier,
+inside of a container.  It's dark here.  A constellation of items are with you
+now, but you can't see them.
 
 Screen is convenient because as you may know, with `^A`-`c` you can open up a
 new Linux shell inside the container and do other things &mdash; bash, or edit
@@ -80,16 +81,20 @@ always wanted to do, and come back later.
 
     $ docker attach novfes
 
-Now you have `screen` running inside of `tmux`.  `^B`-`d` is your safe egress
-key.  Come back again with `tmux attach` or `tmux a`.  `^B`-`c` will get you
-another shell on the host machine, and `^A`-`c` still gets a new shell inside
-of the container.
+Now you have just one `screen` running inside of `tmux`.  `^B`-`d` is your safe
+egress key.  You can come back after that again with `tmux attach` or `tmux a`.
+`^B`-`c` will get you another shell on the host machine, and `^A`-`c` still
+gets a new shell inside of the container.
 
 There you could (for example) `git pull` and `make clean && make` if you needed
 to recompile your `vere` (on Flag Day or any other time), or you could use this
 chance to find an editor you like and go for a browse around in `/urbit/urb/`
 &mdash; I'd start by making a desk and copying some hoons from `zod/try/bin/`,
 like `app.hoon`, `toy.hoon`, or even `zod/main/bin/thumb.hoon` into it.
+
+`^P`-`^Q` detaches from `novfes` so you can safely close down tmux, and the
+vere/pier is still running in screen.  You can freely attach and detach in this
+way, of course either with or without tmux.
 
 `^A`-`d` is still just at the dangerous precipice of the next bad idea, `^D`,
 but hey, you've probably seen some shit by now, so go ahead and try it.
@@ -101,23 +106,27 @@ but hey, you've probably seen some shit by now, so go ahead and try it.
 I used the image `novfes-lodzod` as my commit target and `novfes` as the name
 for my running container, to keep docker from getting confused &mdash; they
 could each have the same name, and something in the Docker stack would surely
-complain of a namespace conflict between image and container before long.  If
-you are trying to follow/edit the scripts I had you put in `~/bin` in step 3,
-it may help to replace these names when you pick your own.
+complain of a namespace conflict between image and container before too long.
+
+If you are trying to follow/edit the scripts I had you put in `~/bin` in step
+3, it may help to replace these names at the top of the script, and pick some
+of your own.
+
+---
 
 If you play fast-and-loose detaching screen and exiting the parent process, you
 will most very probably sink your ship if you don't know what you're doing.  I
-did my best, there's velvet rope.  If you get an error message, read carefully,
-you should be able to determine what's gone wrong and get it back on the rails.
+did my best, there's velvet rope.  If you get an error message, read carefully
+and you should be able to determine what's gone wrong to get back on the rails.
 
 __ Thanks for playing along! __
 
-You can also build for yourself from a `./Dockerfile` here, some `Dockerfile`
+You can also build for yourself from a `./Dockerfile` here, some `Dockerfile`s
 you also find here in `urbinit-base` and `urbinit-src`, which ultimately depend
 on [kingdonb/baseimage-docker](http://github.com/kingdonb/baseimage-docker).
 
 If you did not already, create the empty directory ~/.dlock now, on the host
-where you run your docker containers: `mkdir ~/.dlock`
+where you run your docker containers: `mkdir ~/.dlock` and begin some ships!
 
 ******
 
@@ -130,10 +139,9 @@ Read `init-yacht` briefly since you may need to change it
 ### More than one pier?
 
 If you want to run multiple piers on the same docker host machine, you would
-simply make a copy of init-yacht and change the SHIP and CONT variables to
-something unique on your host -- you could use the $SHIP variable:
-LOCKFILE="$HOME/.dlock/$SHIP.lock".  They can all use the
-same `init-yacht-stop`
+simply make a copy of `init-yacht` and change the SHIP and CONT variables to
+something unique on your host.  They can all use the same `init-yacht-stop`
+since it takes $SHIP as its first argument.  You need not make other changes.
 
 ******
 
