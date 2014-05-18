@@ -119,7 +119,7 @@ will most very probably sink your ship if you don't know what you're doing.  I
 did my best, there's velvet rope.  If you get an error message, read carefully
 and you should be able to determine what's gone wrong to get back on the rails.
 
-__ Thanks for playing along! __
+## Thanks for playing along!
 
 You can also build for yourself from a `./Dockerfile` here, some `Dockerfile`s
 you also find here in `urbinit-base` and `urbinit-src`, which ultimately depend
