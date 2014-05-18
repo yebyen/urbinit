@@ -3,8 +3,8 @@ export URBIT_HOME=/urbit/urb
 cd /urbit
 if [ ! -d pier ]
 then
-  screen bin/vere -c pier
+  screen -l bin/vere -c pier
 else
-  screen bin/vere pier
+  screen -l bin/vere pier
 fi
 bash
