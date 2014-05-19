@@ -42,14 +42,24 @@ new Linux shell inside the container and do other things &mdash; bash, or edit
 a file within the container `novfes`, that `init-yacht` started.
 
 Your keys are being generated and shortly after that, your new submarine should
-emerge to pull hoons from `~zod`.  If you are totally new here, you should stop
-there, and pick up the official Urbit docs at their first mention of `:begin`.
-You are ready for your first destroyer.
+emerge to pull hoons from `~zod`.  When this is finished, you're left staring
+at a prompt that looks something like this:
+
+    ...
+    + /~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try/1/bin/tiff/hoon
+    + /~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try/1/bin/infinite/hoon
+    + /~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try/1/bin/edpk/hoon
+    + /~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try/1/bin/till/hoon
+    ~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try=> 
+
+If you are totally new here, you should stop there, and pick up the official
+Urbit docs at their first mention of `:begin`.  You are ready for your first
+destroyer.  If you are not so new here, you may already know what to do next.
 
 There are no Unix system calls in Urbit, this is by design.  If docker started
 `vere` directly, you would be trapped there, which is still a problem because
-there is no reasonable way to edit your hoon apps.  The %clay filesystem is at
-`$URBIT_HOME` (which is found at `/urbit/urb` in your new urbinit container).
+there is no reasonable way to edit your hoon apps.  The `%clay` filesystem is
+homed at `$URBIT_HOME` (at `/urbit/urb` in this, your new urbinit container).
 
 -----
 
