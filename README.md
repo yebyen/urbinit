@@ -52,9 +52,10 @@ at a prompt that looks something like this:
     + /~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try/1/bin/till/hoon
     ~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try=> 
 
-If you are totally new here, you should stop there, and pick up the official
-Urbit docs at their first mention of `:begin`.  You are ready for your first
-destroyer.  If you are not so new here, you may already know what to do next.
+If you are totally new, you should stop here and pick up the official Urbit
+docs.  You can start reading at their first mention of `:begin`.  You are ready
+for your first destroyer.  If you are not so new here, you may already have a
+good idea of what to do next.
 
 There are no Unix system calls in Urbit, this is by design.  If docker started
 `vere` directly, you would be trapped there, which is still a problem because
