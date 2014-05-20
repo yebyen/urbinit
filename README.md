@@ -11,10 +11,9 @@
 #### tl;dr if you're familiar with docker
 
 If you are on a real 64-bit host with Docker, you may optionally just omit any
-`:i686` that you find in the instructions below.
-
-At press time the latest `:i686` tags were actually newer than `yebyen/urbinit`
-`:latest`, but YMMV.
+`:i686` that you find throughout the instructions.  Docker does not support
+32-bit hosts but at press time the latest `:i686` tags were actually newer than
+`yebyen/urbinit:latest`, YMMV.  Lately I do most of my work on 32-bit hosts.
 
 1. `docker pull yebyen/urbinit` or `docker pull yebyen/urbinit:i686`
 2. `docker tag yebyen/urbinit:i686 novfes-lodzod`
