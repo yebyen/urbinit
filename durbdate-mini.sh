@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
-#cd ~/bin \
-  echo "Rebuilding i686" \
-  && docker build --no-cache --rm -t yebyen/urbinit:i686      ./           \
-  && docker tag yebyen/urbinit:i686 yebyen/urbinit \
+  echo "Rebuilding amd64" \
+<<<<<<< HEAD
+  && docker build --no-cache --rm -t yebyen/urbinit:amd64 . \
+  && docker tag yebyen/urbinit:amd64 yebyen/urbinit \
+=======
+  && docker build --no-cache --rm -t yebyen/urbinit:amd64     ./           \
+>>>>>>> catch up amd64 branch to sipsup-dopdep (i686)
   && docker push yebyen/urbinit
