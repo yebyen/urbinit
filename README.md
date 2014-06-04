@@ -13,9 +13,9 @@
 It has come to my attention that the tl;dr below is still a little verboser
 than it needs to be, so even shorter:
 
-1. mkdir ~/.dlock
-2. git clone http://github.com/yeyben/urbinit ~/bin
-3. bin/init-yacht
+1. `mkdir ~/.dlock`
+2. `git clone http://github.com/yeyben/urbinit ~/bin`
+3. `bin/init-yacht`
 
 The only time this can go wrong that I am aware is if you have some stale
 images from having done this before, or if the index images themselves are
