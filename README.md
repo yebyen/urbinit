@@ -8,6 +8,20 @@
 
 -----
 
+#### tl;dr tl;dr
+
+It has come to my attention that the tl;dr below is still a little verboser
+than it needs to be, so even shorter:
+
+1. mkdir ~/.dlock
+2. git clone http://github.com/yeyben/urbinit ~/bin
+3. bin/init-yacht
+
+The only time this can go wrong that I am aware is if you have some stale
+images from having done this before, or if the index images themselves are
+stale.  Look at the `durbdate` scripts for updating the images, the ones pulled
+from the index may not always be fresh (but I will try to keep them updated.)
+
 #### tl;dr if you're familiar with docker
 
 If you are on a real 64-bit host with Docker, you may optionally just omit any
