@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export URBIT_HOME=/urbit/urb
+
 cd /urbit
 if [ ! -d pier ]
 then
