@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
-SHIP=novfes-lodzod
-CONT=novfes
+SHIP=magsup-sogdep
+CONT=magsup
 LOCKFILE="$HOME/.dlock/$SHIP.lock"
+
+if [ ! -d $HOME/.dlock ]; then
+  mkdir -p $HOME/.dlock
+fi
 
 if [ ! -e $LOCKFILE ]; then
 #  ~/bin/urbit

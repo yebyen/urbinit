@@ -12,9 +12,9 @@
 - [ ] Choose a name for your ship's container. `CONT=magsup`
 - [ ] Choose a different name for the image. `SHIP=magsup-sogdep`
 - [ ] Clone this repo: `git clone http://github.com/yebyen/urbinit ~/bin`
-- [ ] Edit the script and set the values you chose above in `~/bin/init-boat`
-- [ ] Pull down about a gigabyte of images: `docker pull yebyen/urbinit:i686`
-- [ ] Tag from that precompiled image: `docker tag yebyen/urbinit:i686 $SHIP`
+- [ ] Edit the script and set the values you chose above in `~/bin/init-yacht`
+- [ ] Pull down about a gigabyte of images: `docker pull yebyen/urbinit:amd64`
+- [ ] Tag from that precompiled image: `docker tag yebyen/urbinit:amd64 $SHIP`
 
 Last step, to launch a container and start a submarine:
 
