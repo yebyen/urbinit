@@ -4,30 +4,43 @@
 4. A submarine is berthed
 5. Going beneath the surface and coming back up
 6. From the Creator
-7. Polite and Friendly Etiquette/Advice for any Global Namespace Chat
 
 -----
 
-#### tl;dr tl;dr
+#### tl;dr
 
-It has come to my attention that the tl;dr below is still a little verboser
-than it needs to be, so even shorter:
+- [ ] Choose a name for your ship's container. `CONT=magsup`
+- [ ] Choose a different name for the image. `SHIP=magsup-sogdep`
+- [ ] Clone this repo: `git clone http://github.com/yebyen/urbinit ~/bin`
+- [ ] Edit the script and set the values you chose above in `~/bin/init-boat`
+- [ ] Pull down about a gigabyte of images: `docker pull yebyen/urbinit:i686`
+- [ ] Tag from that precompiled image: `docker tag yebyen/urbinit:i686 $SHIP`
 
-1. `mkdir ~/.dlock`
-2. `git clone http://github.com/yeyben/urbinit ~/bin`
-3. `bin/init-yacht`
+Last step, to launch a container and start a submarine:
 
-The only time this can go wrong that I am aware is if you have some stale
-images from having done this before, or if the index images themselves are
-stale.  Look at the `durbdate` scripts for updating the images, the ones pulled
-from the index may not always be fresh (but I will try to keep them updated.)
+- [x] `~/bin/init-yacht`
 
-#### tl;dr if you're familiar with docker
+You might also want to make sure that `~/bin` is in your `PATH`.  You should be
+able to say `init` instead of `bin/init-yacht` as long as there are no name
+conflicts earlier in your shell's `PATH` variable.  Read the script itself, or
+read on to understand what's happening, but the short version is that when you
+<kbd>ctrl</kbd> + <kbd>d</kbd> a few times to exit the ship and container, a
+brief delay happens when the Hoon machine in `CONT` is `docker commit`'ted back
+to the image `SHIP`.
 
-If you are on a real 64-bit host with Docker, you may optionally just omit any
-`:i686` that you find throughout the instructions.  Docker does not support
-32-bit hosts but at press time the latest `:i686` tags were actually newer than
-`yebyen/urbinit:latest`, YMMV.  Lately I do most of my work on 32-bit hosts.
+Docker layers these commits on top of each other with the configured storage
+driver, btrfs or aufs probably.  You can do `init-yacht` many times.  However,
+`doit.sh` is for when you've done this too many times.  The limit is up to at
+least 127 times or more by now, minus any layers consumed by the build process.
+
+To rebuild, look at the `durbdate*.sh` scripts.  You can build the top layers
+with `./durbdate-mini.sh`, just quit with <kbd>ctrl</kbd> + <kbd>c</kbd> when
+it asks for credentials and tries to push updated images to the index (unless
+you are me, in which case, you can of course log in as yebyen and push them.)
+
+#### Older instructions
+
+I do most of my work on 32-bit hosts.  Use the i686 tag instead if you do too.
 
 1. `docker pull yebyen/urbinit` or `docker pull yebyen/urbinit:i686`
 2. `docker tag yebyen/urbinit:i686 novfes-lodzod`
@@ -40,10 +53,12 @@ If you are on a real 64-bit host with Docker, you may optionally just omit any
 Now in Ubuntu, [screen](https://www.debian-administration.org/articles/34) is
 running with urbit inside, and if you're already familiar with screen, resist
 the urge to `^A`-`d` and exit the shell, when you want to try and leave your
-ship running as a background process to come back later.
+ship running as a background process to come back later.  I'll explain...
 
 Unless you are a docker and screen expert, you will have inadvertently stopped
 the whole container and killed both of `screen` and `vere` in the process.
+Doing this may leave you with a giant 512MB or 1GB core file in your container,
+committed and saved forever.  Moving on, since you didn't do that...
 
 You are in front of a `vere` that runs inside of `screen` under a `bash` with
 its parent process docker, and your ship is floating at a newly created pier,
