@@ -4,17 +4,14 @@ set -e
 SHIP=magsup-sogdep
 CONT=magsup
 LOCKFILE="$HOME/.dlock/$SHIP.lock"
-
-if [ ! -d $HOME/.dlock ]; then
-  mkdir -p $HOME/.dlock
-fi
+ADDR=59078:59078
 
 if [ ! -e $LOCKFILE ]; then
 #  ~/bin/urbit
 
 source ~/.profile
 docker rm $CONT || /bin/true
-ID=$(docker run --name $CONT -d -i -t $SHIP /.urbinit)
+ID=$(docker run -p $ADDR --name $CONT -d -i -t $SHIP /.urbinit)
 echo $ID > $LOCKFILE
 #docker attach $ID
 docker attach $CONT

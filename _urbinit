@@ -7,6 +7,6 @@ if [ ! -d pier ]
 then
   screen -l bin/vere -c pier
 else
-  screen -l bin/vere pier
+  screen -l bin/vere -p 59078 pier
 fi
 bash
