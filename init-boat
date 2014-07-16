@@ -5,13 +5,14 @@ SHIP=kangxi
 CONT=del
 LOCKFILE="$HOME/.dlock/$SHIP.lock"
 ADDR=129.21.49.95:13374:13374/udp
+ADDR2=8099:8080
 
 if [ ! -e $LOCKFILE ]; then
 #  ~/bin/urbit
 
 source ~/.profile
 docker rm $CONT || /bin/true
-ID=$(docker run -p $ADDR --name $CONT -d -i -t $SHIP /.urbinit)
+ID=$(docker run -p $ADDR -p $ADDR2 --name $CONT -d -i -t $SHIP /.urbinit)
 echo $ID > $LOCKFILE
 #docker attach $ID
 docker attach $CONT
