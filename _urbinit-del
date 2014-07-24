@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+export LANG=en_US.UTF-8
+export TZ=America/New_York
+
+cd /urbit
+if [ ! -d pier ]
+then
+  screen -l bin/vere -c -I ~del pier
+else
+  screen -l bin/vere -I ~del pier
+fi
+bash
