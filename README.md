@@ -13,8 +13,8 @@
 - [ ] Choose a different name for the image. `SHIP=magsup-sogdep`
 - [ ] Clone this repo: `git clone http://github.com/yebyen/urbinit ~/bin`
 - [ ] Edit the script and set the values you chose above in `~/bin/init-yacht`
-- [ ] Pull down about a gigabyte of images: `docker pull yebyen/urbinit:amd64`
-- [ ] Tag from that precompiled image: `docker tag yebyen/urbinit:amd64 $SHIP`
+- [ ] Pull down about a gigabyte of images: `docker pull yebyen/urbinit:latest`
+- [ ] Tag from that precompiled image: `docker tag yebyen/urbinit:latest $SHIP`
 
 Last step, to launch a container and start a submarine:
 
@@ -26,7 +26,20 @@ conflicts earlier in your shell's `PATH` variable.  Read the script itself, or
 read on to understand what's happening, but the short version is that when you
 <kbd>ctrl</kbd> + <kbd>d</kbd> a few times to exit the ship and container, a
 brief delay happens when the Hoon machine in `CONT` is `docker commit`'ted back
-to the image `SHIP`.
+to the image `SHIP`.  If you don't want that, you can use docker and pick any
+other way to handle to start and stop the container for yourself.
+
+If you use init and an unclean shutdown happens (kill -9 or power failure), a
+lock created in `$HOME/dlock` won't be cleared.  This certainly also means that
+commit I promised you never happened.  Clearing the lock without `docker commit`ting
+your `$CONT` back to image `$SHIP` can be an easy way to see your ship sink.
+So, if your container is stopped and you see...
+
+```
+LOCK FILE EXISTS ALREADY... quitting
+```
+
+then you can just: `docker commit $CONT $SHIP && init-yacht-stop $SHIP`.
 
 Docker layers these commits on top of each other with the configured storage
 driver, btrfs or aufs probably.  You can do `init-yacht` many times.  However,
