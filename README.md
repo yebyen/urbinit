@@ -53,7 +53,8 @@ you are me, in which case, you can of course log in as yebyen and push them.)
 
 #### Older instructions
 
-I do most of my work on 32-bit hosts.  Use the i686 tag instead if you do too.
+I do most of my work on 32-bit hosts.  Use the i686 tag even if you don't.
+Sorry if you come from even more exotic architectures.
 
 1. `docker pull yebyen/urbinit` or `docker pull yebyen/urbinit:i686`
 2. `docker tag yebyen/urbinit:i686 novfes-lodzod`
