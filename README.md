@@ -13,7 +13,7 @@
 - [ ] Choose a different name for the image. `SHIP=magsup-sogdep`
 - [ ] Clone this repo: `git clone http://github.com/yebyen/urbinit ~/bin`
 - [ ] Edit the script and set the values you chose above in `~/bin/init-yacht`
-- [ ] Pull down about a gigabyte of images: `docker pull yebyen/urbinit:latest`
+- [ ] Pull down half a gigabyte of images: `docker pull yebyen/urbinit:latest`
 - [ ] Tag from that precompiled image: `docker tag yebyen/urbinit:latest $SHIP`
 
 Last step, to launch a container and start a submarine:
