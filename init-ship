@@ -13,7 +13,7 @@ docker rm $CONT || /bin/true
 ID=$(docker run --name $CONT -d -i -t $SHIP /.urbinit)
 echo $ID > $LOCKFILE
 #docker attach $ID
-docker attach $CONT
+docker attach $CONT || /bin/true
 docker commit $CONT $SHIP > $LOCKFILE
 
   ~/bin/init-yacht-stop $SHIP
