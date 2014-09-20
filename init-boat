@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-SHIP=kangxi:newera
+SHIP=kangxi
 CONT=del
 LOCKFILE="$HOME/.dlock/$SHIP.lock"
 ADDR=129.21.49.95:13374:13374/udp
