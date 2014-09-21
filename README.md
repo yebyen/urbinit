@@ -18,7 +18,7 @@ lrwxrwxrwx 1  31 vere -> /home/yebyen/del/urbit/bin/vere
 ```
 
 These can coexist with any of your own regular Earth ~/bin scripts.  See also
-[yebyen/urbit-deb](github.com/yebyen/urbit-deb) to build deb packages instead.
+[yebyen/urbit-deb](//github.com/yebyen/urbit-deb) to build deb packages instead.
 
 The various init scripts are meant to launch different ships; they contain some
 variables to set a ship and its container's name, which you may change to suit
@@ -132,7 +132,7 @@ at a prompt that looks something like this:
     ~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try=> 
 
 If you are totally new, you should stop here and pick up
-the [official Urbit](github.com/urbit/urbit) docs.  You can skip to the first
+the [official Urbit](//github.com/urbit/urbit) docs.  You can skip to the first
 mention of `:begin`, near "A new life awaits you on the off-world colonies!"
 You are ready for your first destroyer.  If you are not so new here, you may
 already have a good idea of what to do next.
