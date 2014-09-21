@@ -1,16 +1,36 @@
-You are meant to clone this repo into ~/bin or copy the init scripts to ~/bin
+You are meant to clone this repo into ~/bin or copy the init scripts to ~/bin.
+
 Example:
 
-```[ls -l example from my ~/bin dir]
+```
+kangxi:~/bin$ ls -l
+total 20
+lrwxrwxrwx 1  18 docker -> /usr/bin/docker.io
+lrwxrwxrwx 1   9 foprex -> init-ship
+lrwxrwxrwx 1   9 init -> init-boat
+-rwxr-xr-x 1 496 init-boat
+-rwxr-xr-x 1 457 init-ship
+-rwxr-xr-x 1 424 init-yacht
+-rwxr-xr-x 1 424 init-yacht2
+-rwxr-xr-x 1 161 init-yacht-stop
+lrwxrwxrwx 1  15 node -> /usr/bin/nodejs
+lrwxrwxrwx 1  31 vere -> /home/yebyen/del/urbit/bin/vere
 ```
 
-The init scripts are meant to launch some different ships; they contain some
-variables to set the ship name and its container, which you may change to suit
-your own needs.  Start with init-ship.  There is also a stop script which any
-init-ship should call correctly to clean up and prepare for next start.
+These can coexist with any of your own regular Earth ~/bin scripts.  See also
+[yebyen/urbit-deb](/yebyen/urbit-deb) to build deb packages instead.
+
+The various init scripts are meant to launch different ships; they contain some
+variables to set a ship and its container's name, which you may change to suit
+your own needs.  Start with init-ship.  There is also a stop script which init
+should call to clean up (commit your ship's log) and prepare for next start.
 
 If you are a Mac user, you might need to make changes.  The scripts were not
 tested with MacOS or boot2docker.  YMMV, and pull requests are always welcome!
+Finally, if you are able to get two ships in separate containers on the same
+host to talk with each other, please tell me how!  It is a known bug, probably
+docker's fault.  I think they did it on purpose.  (Urbit is otherwise really
+very good at NAT-busting and establishing 2-way comms with hostile networks.)
 
 -----
 
@@ -28,34 +48,32 @@ tested with MacOS or boot2docker.  YMMV, and pull requests are always welcome!
 - [ ] Choose a name for your ship's container. `CONT=magsup`
 - [ ] Choose a different name for the image. `SHIP=magsup-sogdep`
 - [ ] Clone this repo: `git clone http://github.com/yebyen/urbinit ~/bin`
-- [ ] Edit the script and set the values you chose above in `~/bin/init-yacht`
+- [ ] Edit the script and set the values you chose above in `~/bin/init-ship`
 - [ ] Pull down half a gigabyte of images: `docker pull yebyen/urbinit:latest`
 - [ ] Tag from that precompiled image: `docker tag yebyen/urbinit:latest $SHIP`
 
 Last step, to launch a container and start a submarine:
 
-- [x] `~/bin/init-yacht`
+- [x] `~/bin/init-ship`
 
-You might also want to make sure that `~/bin` is in your `PATH`.  You should be
-able to say `init` instead of `bin/init-yacht` as long as there are no name
-conflicts earlier in your shell's `PATH` variable.  Read the script itself, or
-read on to understand what's happening, but the short version is that when you
-<kbd>ctrl</kbd> + <kbd>d</kbd> a few times to exit the ship and container, a
-brief delay happens when the Hoon machine in `CONT` is `docker commit`'ted back
-to the image `SHIP`.  If you don't want that, you can use docker and pick any
-other way to handle to start and stop the container for yourself.
+Read the script itself, or read on to understand what's happening, but the
+short version is that when you <kbd>ctrl</kbd> + <kbd>d</kbd> a few times to
+exit the ship and container, a brief delay happens when the Hoon machine in
+`CONT` is `docker commit`'ted back to the image `SHIP`, before `init-yacht-stop
+$SHIP` is called to clean up the lock file.
 
-If you use init and an unclean shutdown happens (kill -9 or power failure), a
-lock created in `$HOME/dlock` won't be cleared.  This certainly also means that
-commit I promised you never happened.  Clearing the lock without `docker commit`ting
-your `$CONT` back to image `$SHIP` can be an easy way to see your ship sink.
-So, if your container is stopped and you see...
+If the commit should fail, the lock created in `$HOME/dlock` won't be cleared.
+If you do the wrong thing (should only happen in the event of power outage) you
+may sink your ship!  Clearing the lock without `docker commit`ting your `$CONT`
+back to image `$SHIP` can be an easy way to see your ship sink.  So, if your
+container is stopped and you see when you try to restart it...
 
 ```
 LOCK FILE EXISTS ALREADY... quitting
 ```
 
-then you can just: `docker commit $CONT $SHIP && init-yacht-stop $SHIP`.
+... read the script and see what it was meant to do at the end to clean up, or
+you can just: `docker commit $CONT $SHIP && init-yacht-stop $SHIP`.
 
 Docker layers these commits on top of each other with the configured storage
 driver, btrfs or aufs probably.  You can do `init-yacht` many times.  However,
@@ -103,17 +121,21 @@ Your keys are being generated and shortly after that, your new submarine should
 emerge to pull hoons from `~zod`.  When this is finished, you're left staring
 at a prompt that looks something like this:
 
+    ; ~zod |Tianming| is your neighbor
+    ; ~zod |Tianming| is your neighbor
+    [%fetch %main]
+    [%fetch %main]
     ...
-    + /~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try/1/bin/tiff/hoon
-    + /~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try/1/bin/infinite/hoon
-    + /~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try/1/bin/edpk/hoon
-    + /~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try/1/bin/till/hoon
+    [%fetch %arvo]
+    fetched new objects, merging
+    updating...
     ~dilmex-dilwyl-midsub-daplet--lantux-filtex-binsub-mognex/try=> 
 
-If you are totally new, you should stop here and pick up the official Urbit
-docs.  You can start reading at their first mention of `:begin`.  You are ready
-for your first destroyer.  If you are not so new here, you may already have a
-good idea of what to do next.
+If you are totally new, you should stop here and pick up
+the [official Urbit](/urbit/urbit) docs.  You can skip to the first mention of
+`:begin`, near "A new life awaits you on the off-world colonies!"  You are
+ready for your first destroyer.  If you are not so new here, you may already
+have a good idea of what to do next.
 
 There are no Unix system calls in Urbit, this is by design.  If docker started
 `vere` directly, you would be trapped there, which is still a problem because
