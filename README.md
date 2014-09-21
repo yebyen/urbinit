@@ -1,3 +1,19 @@
+You are meant to clone this repo into ~/bin or copy the init scripts to ~/bin
+Example:
+
+```[ls -l example from my ~/bin dir]
+```
+
+The init scripts are meant to launch some different ships; they contain some
+variables to set the ship name and its container, which you may change to suit
+your own needs.  Start with init-ship.  There is also a stop script which any
+init-ship should call correctly to clean up and prepare for next start.
+
+If you are a Mac user, you might need to make changes.  The scripts were not
+tested with MacOS or boot2docker.  YMMV, and pull requests are always welcome!
+
+-----
+
 1. tl;dr
 2. About urbit and docker
 3. `init-yacht`
