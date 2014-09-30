@@ -5,4 +5,5 @@
   && docker run -i -t --name src-i686 yebyen/urbinit:src-i686 true  \
   && docker export src-i686|docker import - urbinit-src-i686  \
   && docker tag urbinit-src-i686 yebyen/urbinit:src-i686 \
+  && docker rmi urbinit-src-i686 \
   && docker rm src-i686 && docker push yebyen/urbinit:src-i686
