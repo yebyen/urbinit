@@ -1,15 +1,3 @@
-diff --git a/Makefile b/Makefile
-index 8be9e41..94861d6 100644
---- a/Makefile
-+++ b/Makefile
-@@ -85,7 +85,6 @@ CWFLAGS=-Wall \
-         -Wextra \
-         -Wno-sign-compare \
-         -Wno-unused-parameter \
--        -Werror \
-         -Wno-error=missing-field-initializers
- 
- ifdef NO_SILENT_RULES
 diff --git a/i/n/a.h b/i/n/a.h
 index 9a42bdc..daf7107 100644
 --- a/i/n/a.h
