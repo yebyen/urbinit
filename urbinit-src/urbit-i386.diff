@@ -1,5 +1,32 @@
+diff --git a/Makefile b/Makefile
+index cf1a8ea..9d56a38 100644
+--- a/Makefile
++++ b/Makefile
+@@ -35,7 +35,7 @@ BIN=bin
+ 
+ LIB=$(shell pwd)/urb
+ 
+-RM=rm -f
++RM=rm -rf
+ CC=gcc
+ CXX=g++
+ CXXFLAGS=$(CFLAGS)
+@@ -426,11 +426,13 @@ debinstall:
+ 
+ clean: 
+ 	$(RM) $(VERE_OFILES) $(BIN)/vere vere.pkg $(VERE_DFILES)
++	$(RM) debian/files debian/urbit*
+ 
+ distclean: clean $(LIBUV_MAKEFILE)
+ 	$(MAKE) -C outside/libuv_0.11 distclean
+ 	$(MAKE) -C outside/re2 clean
+ 	$(MAKE) -C outside/ed25519 clean
+ 	$(MAKE) -C outside/anachronism clean
++	$(RM) debian/files debian/urbit*
+ 
+ .PHONY: clean debbuild debinstalldistclean etags osxpackage tags
 diff --git a/i/n/a.h b/i/n/a.h
-index 9a42bdc..daf7107 100644
+index 541e24e..5e7557f 100644
 --- a/i/n/a.h
 +++ b/i/n/a.h
 @@ -13,7 +13,7 @@
