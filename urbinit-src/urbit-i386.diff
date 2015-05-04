@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index cf1a8ea..9d56a38 100644
+index c001315..3803dd2 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -35,7 +35,7 @@ BIN=bin
@@ -11,7 +11,7 @@ index cf1a8ea..9d56a38 100644
  CC=gcc
  CXX=g++
  CXXFLAGS=$(CFLAGS)
-@@ -426,11 +426,13 @@ debinstall:
+@@ -434,6 +434,7 @@ debinstall:
  
  clean: 
  	$(RM) $(VERE_OFILES) $(BIN)/vere vere.pkg $(VERE_DFILES)
@@ -19,9 +19,10 @@ index cf1a8ea..9d56a38 100644
  
  distclean: clean $(LIBUV_MAKEFILE)
  	$(MAKE) -C outside/libuv_0.11 distclean
- 	$(MAKE) -C outside/re2 clean
+@@ -441,5 +442,6 @@ distclean: clean $(LIBUV_MAKEFILE)
  	$(MAKE) -C outside/ed25519 clean
  	$(MAKE) -C outside/anachronism clean
+ 	$(MAKE) -C outside/scrypt clean
 +	$(RM) debian/files debian/urbit*
  
  .PHONY: clean debbuild debinstalldistclean etags osxpackage tags
