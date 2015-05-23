@@ -14,7 +14,7 @@ lrwxrwxrwx 1   9 init -> init-boat
 -rwxr-xr-x 1 424 init-yacht2
 -rwxr-xr-x 1 161 init-yacht-stop
 lrwxrwxrwx 1  15 node -> /usr/bin/nodejs
-lrwxrwxrwx 1  31 vere -> /home/yebyen/del/urbit/bin/vere
+lrwxrwxrwx 1  31 urbit -> /home/yebyen/del/urbit/bin/urbit
 ```
 
 These can coexist with any of your own regular Earth ~/bin scripts.  See also
@@ -104,11 +104,11 @@ the urge to `^A`-`d` and exit the shell, when you want to try and leave your
 ship running as a background process to come back later.  I'll explain...
 
 Unless you are a docker and screen expert, you will have inadvertently stopped
-the whole container and killed both of `screen` and `vere` in the process.
+the whole container and killed both of `screen` and `urbit` in the process.
 Doing this may leave you with a giant 512MB or 1GB core file in your container,
 committed and saved forever.  Moving on, since you didn't do that...
 
-You are in front of a `vere` that runs inside of `screen` under a `bash` with
+You are in front of a `urbit` that runs inside of `screen` under a `bash` with
 its parent process docker, and your ship is floating at a newly created pier,
 inside of a container.  It's dark here.  A constellation of items are with you
 now, but you can't see them.
@@ -138,7 +138,7 @@ You are ready for your first destroyer.  If you are not so new here, you may
 already have a good idea of what to do next.
 
 There are no Unix system calls in Urbit, this is by design.  If docker started
-`vere` directly, you would be trapped there, which is still a problem because
+`urbit` directly, you would be trapped there, which is still a problem because
 there is no reasonable way to edit your hoon apps.  The `%clay` filesystem is
 homed at `$URBIT_HOME` (at `/urbit/urb` in this, your new urbinit container).
 
@@ -147,7 +147,7 @@ homed at `$URBIT_HOME` (at `/urbit/urb` in this, your new urbinit container).
 ___Going beneath the surface___
 
 If everything goes right, you'll eventually get tired and want to quit.  Press
-`^D` two or more times: once for `vere`, again for each extra shell window you
+`^D` two or more times: once for `urbit`, again for each extra shell window you
 may have created with `^A`-`c` &mdash; now ending `screen` &mdash; and once
 more for the top-most `bash`: the last waiting process in the container.  Now,
 before it's too late, `docker ps -a` and `docker images` to see what happened.
@@ -178,14 +178,14 @@ egress key.  You can come back after that again with `tmux attach` or `tmux a`.
 gets a new shell inside of the container.
 
 There you could (for example) `git pull` and `make clean && make` if you needed
-to recompile your `vere` (on Flag Day or any other time), or you could use this
+to recompile your `urbit` (on Flag Day or any other time), or you could use this
 chance to find an editor you like and go for a browse around in `/urbit/urb/`
 &mdash; I'd start by making a desk and copying some hoons from `zod/try/bin/`,
 like `app.hoon`, `toy.hoon`, or even `zod/main/bin/thumb.hoon` into it.
 
-`^P`-`^Q` detaches from `novfes` so you can safely close down tmux, and the
-vere/pier is still running in screen.  You can freely attach and detach in this
-way, of course either with or without tmux.
+`^P`-`^Q` detaches from `novfes` so you can safely close down tmux, and the pier
+is still running in screen.  You can freely attach and detach in this way, of
+course either with or without tmux.
 
 `^A`-`d` is still just at the dangerous precipice of the next bad idea, `^D`,
 but hey, you've probably seen some shit by now, so go ahead and try it.

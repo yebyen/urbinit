@@ -5,8 +5,8 @@ export TZ=America/New_York
 cd /urbit
 if [ ! -d pier ]
 then
-  screen -l bin/vere -c -I ~del pier
+  screen -l bin/urbit -c -I ~del pier
 else
-  screen -l bin/vere -I ~del pier
+  screen -l bin/urbit -I ~del pier
 fi
 bash
