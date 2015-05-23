@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index c94d85f..de08dc7 100644
+index c0ea4e0..de217db 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -35,7 +35,7 @@ BIN=bin
@@ -14,7 +14,7 @@ index c94d85f..de08dc7 100644
 @@ -434,6 +434,7 @@ debinstall:
  
  clean: 
- 	$(RM) $(VERE_OFILES) $(BIN)/vere vere.pkg $(VERE_DFILES)
+ 	$(RM) $(VERE_OFILES) $(BIN)/urbit urbit.pkg $(VERE_DFILES)
 +	$(RM) debian/files debian/urbit*
  
  distclean: clean $(LIBUV_MAKEFILE)
@@ -27,7 +27,7 @@ index c94d85f..de08dc7 100644
  
  .PHONY: clean debbuild debinstalldistclean etags osxpackage tags
 diff --git a/i/n/a.h b/i/n/a.h
-index c29a1cd..bba0698 100644
+index 26423f9..d6e1aff 100644
 --- a/i/n/a.h
 +++ b/i/n/a.h
 @@ -19,7 +19,7 @@
