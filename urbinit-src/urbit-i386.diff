@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index c0ea4e0..de217db 100644
+index 7bf6943..bfc0122 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -35,7 +35,7 @@ BIN=bin
@@ -8,10 +8,10 @@ index c0ea4e0..de217db 100644
  
 -RM=rm -f
 +RM=rm -rf
+ ifneq ($(UNAME),FreeBSD)
  CC=gcc
  CXX=g++
- CXXFLAGS=$(CFLAGS)
-@@ -434,6 +434,7 @@ debinstall:
+@@ -440,6 +440,7 @@ debinstall:
  
  clean: 
  	$(RM) $(VERE_OFILES) $(BIN)/urbit urbit.pkg $(VERE_DFILES)
@@ -19,7 +19,7 @@ index c0ea4e0..de217db 100644
  
  distclean: clean $(LIBUV_MAKEFILE)
  	$(MAKE) -C outside/libuv_0.11 distclean
-@@ -441,5 +442,6 @@ distclean: clean $(LIBUV_MAKEFILE)
+@@ -447,5 +448,6 @@ distclean: clean $(LIBUV_MAKEFILE)
  	$(MAKE) -C outside/ed25519 clean
  	$(MAKE) -C outside/anachronism clean
  	$(MAKE) -C outside/scrypt clean
