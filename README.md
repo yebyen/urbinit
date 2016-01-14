@@ -242,5 +242,5 @@ message sequence numbers, and won't be able to acknowledge packets."
 
 -- https://groups.google.com/forum/#!searchin/urbit-dev/I$20can$27t$20emphasize$20strongly$20enough/urbit-dev/T_NeU7Iy66o/lRg0OsMOlZcJ
 
-On continuity -- search for "flag day" and "continuity breach" on urbit-dev, or go [here](http://urbit.org/community/articles/continuity/).
+On continuity -- search for "flag day" and "continuity breach" on urbit-dev, or go [here](http://urbit.org/docs/user/tour#-continuity-breaches).
 
