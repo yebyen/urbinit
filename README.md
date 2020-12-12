@@ -1,3 +1,14 @@
+### UNMAINTAINED 2020/12/12
+
+For a maintained Docker Urbit, check out instead: https://github.com/asssaf/urbit-docker
+
+The advice provided by these scripts is bad. You should definitely not use Docker layers as a way to manage an application's permanent state storage. While this may work at first, it could also permanently sink your ship.
+
+You've been warned!
+
+### Urbinit
+
+
 You are meant to clone this repo into ~/bin or copy the init scripts to ~/bin.
 
 Example:
